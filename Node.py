@@ -52,6 +52,12 @@ class Node:
         """
         return copy.copy(self._moves)
 
+    def getHeuristic(self):
+        """
+        Return heuristic used to compute fScore for this node
+        """
+        return self._heuristic
+
     def getCoordByValue(self, value):
         """
         Get i and j coord of the given value

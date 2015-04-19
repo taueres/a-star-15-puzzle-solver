@@ -6,7 +6,7 @@ from Node import Node
 class AStar:
     def __init__(self, heuristic):
         self._nodePool = NodePool()
-        self._nodeBuilder = NodeBuilder(heuristic)
+        self._nodeBuilder = NodeBuilder()
         self._minScore = 100
         self._heuristic = heuristic
 

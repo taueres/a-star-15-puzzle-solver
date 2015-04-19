@@ -2,8 +2,6 @@
 from Node import Node
 
 class NodeBuilder:
-    def __init__(self, heuristic):
-        self._heuristic = heuristic
 
     def getChildNodes(self, node):
         """
@@ -26,7 +24,7 @@ class NodeBuilder:
                 child = Node(
                     position,
                     moves,
-                    self._heuristic
+                    node.getHeuristic()
                 )
                 children.append(child)
         return children
