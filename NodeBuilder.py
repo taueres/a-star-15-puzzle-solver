@@ -2,10 +2,13 @@
 from Node import Node
 
 class NodeBuilder:
+    """
+    Build child nodes for 15-puzzle
+    """
 
     def getChildNodes(self, node):
         """
-        Return list of child nodes
+        Return list of valid child nodes
         """
         children = []
         iSpace, jSpace = node.getCoordByValue(0)

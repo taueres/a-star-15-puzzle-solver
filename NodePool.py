@@ -1,8 +1,12 @@
 # -*- coding: UTF-8 -*-
 class NodePool:
     """
-    Contains list of Nodes used by A* algorithm
+    Contains list of Nodes used by A* algorithm.
+
+    This is an enhanced implementation of a priority queue
+    designed especially to solve 15-puzzle problems
     """
+
     def __init__(self):
         self._pool = []
         self._history = {}
@@ -24,11 +28,11 @@ class NodePool:
         """
         return self._pool.pop(0)
 
-    def length(self):
+    def isEmpty(self):
         """
-        Return the number of elements inside the pool
+        Return true if the priority queue does not contain any node
         """
-        return len(self._pool)
+        return len(self._pool) == 0
 
     def _insort(self, node):
         """
@@ -38,6 +42,6 @@ class NodePool:
         hi = len(self._pool)
         while lo < hi:
             mid = (lo+hi)//2
-            if node.getHScore() < self._pool[mid].getHScore(): hi = mid
+            if node.getFScore() < self._pool[mid].getFScore(): hi = mid
             else: lo = mid + 1
         self._pool.insert(lo, node)

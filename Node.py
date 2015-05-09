@@ -8,14 +8,14 @@ class Node:
     the list of moves which bring us to this position
     """
 
-    def __init__(self, position, moves, heuristic = None):
+    def __init__(self, position, moves, heuristic):
         """
         Builds a new node
         """
         self._position = position
         self._moves = moves
         self._heuristic = heuristic
-        self._fScore = None
+        self._hScore = None
 
     def getPosition(self):
         """
@@ -29,21 +29,21 @@ class Node:
         """
         return len(self._moves)
 
-    def getFScore(self):
-        """
-        Get fScore of this Node. Heuristic passed in
-        the constructor will be used for computation
-        """
-        if self._fScore is None:
-            self._fScore = self._heuristic.compute(self)
-        return self._fScore
-
     def getHScore(self):
         """
-        Get gScore of the Node
-        hScore = gScore + fScore
+        Get hScore of this Node. Heuristic passed in
+        the constructor will be used for computation
         """
-        return self.getGScore() + self.getFScore()
+        if self._hScore is None:
+            self._hScore = self._heuristic.compute(self)
+        return self._hScore
+
+    def getFScore(self):
+        """
+        Get fScore of the Node
+        fScore = gScore + hScore
+        """
+        return self.getGScore() + self.getHScore()
 
     def getMoves(self):
         """
@@ -54,7 +54,7 @@ class Node:
 
     def getHeuristic(self):
         """
-        Return heuristic used to compute fScore for this node
+        Return heuristic used to compute hScore for this node
         """
         return self._heuristic
 
